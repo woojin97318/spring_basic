@@ -3,11 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="pc01" class="com.care.di_test02.PrintClass"/>
-	<bean id="oc01" class="com.care.di_test02.OperationClass"/>
+	<bean id="pc" class="com.care.di_test02.PrintClass"/>
+	<bean id="oc" class="com.care.di_test02.OperationClass"/>
 	<bean id="sc" class="com.care.di_test02.SaveClass">
-		<property name="pc" ref="pc01"/>
-		<property name="oc" ref="oc01"/>
+		<property name="pc" ref="pc"/>
+		<property name="oc" ref="oc"/>
 	</bean>
 	
 </beans>
