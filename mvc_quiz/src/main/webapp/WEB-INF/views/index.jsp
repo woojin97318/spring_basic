@@ -8,13 +8,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>member02/index.jsp<hr>
-	requestScope.index : ${requestScope.index }<br>
-	index(el) : ${index }<br>
-	attr : <%= request.getAttribute("index") %><br>
-	param : <%= request.getParameter("index") %><br>
-	<br>
-	<a href="login02">[로그인 페이지]</a>
-	<a href="${contextPath }/logout02">[로그아웃 페이지]</a>
+<body>
+	index.jsp<hr>
+	
+	<a href="${contextPath }/signup">회원가입</a>
+	<a href="${contextPath }/membership">모든 회원보기</a>
 </body>
 </html>
