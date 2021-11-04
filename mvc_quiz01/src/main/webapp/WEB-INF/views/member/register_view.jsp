@@ -9,9 +9,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	membership.jsp<hr>
-	<c:forEach var="member" items="${list }">
-		${member.id }, ${member.pwd }, ${member.name }<br>
-	</c:forEach>
+	register_view.jsp<hr>
+	
+	<h1>회원가입 페이지</h1>
+	<form action="${contextPath }/member/register" method="post">
+		<input type="text" name="id" placeholder="id"><br>
+		<input type="password" name="pwd" placeholder="pwd"><br>
+		<input type="text" name="name" placeholder="name"><br>
+		<input type="submit" value="가입"><br>
+	</form>
 </body>
 </html>
