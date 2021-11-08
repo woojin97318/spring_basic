@@ -68,10 +68,6 @@ public class QuizController {
 			Model model) {
 		Cookie[] cookies = request.getCookies();
 		
-		if(cookies != null) {
-			for(Cookie c : cookies )
-				System.out.println(c.getName() + " : " + c.getValue());
-		}
 		if(cook != null )
 			model.addAttribute("cook", cook.getValue());
 		

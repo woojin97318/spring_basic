@@ -158,9 +158,9 @@
         <Context docBase="mvc02" path="/root" reloadable="true" source="org.eclipse.jst.jee.server:mvc02"/>
         <Context docBase="mvc_quiz" path="/member" reloadable="true" source="org.eclipse.jst.jee.server:mvc_quiz"/>
         <Context docBase="mvc_quiz01" path="/root" reloadable="true" source="org.eclipse.jst.jee.server:mvc_quiz01"/>
-        -->
         <Context docBase="cookie_session" path="/root" reloadable="true" source="org.eclipse.jst.jee.server:cookie_session"/>
-        </Host>
+        -->
+        <Context docBase="mybatis_junit_06" path="/root" reloadable="true" source="org.eclipse.jst.jee.server:mybatis_junit_06"/></Host>
     </Engine>
   </Service>
 </Server>
