@@ -53,9 +53,9 @@ public class MemberController {
 		return "member/register";
 	}
 	@PostMapping("register_save")
-	public String register_save(MemberDTO dto) {
-		ms.memberRegister(dto);
-		return "redirect:memberinfo";
+	public String register_save(MemberDTO dto, Model model) {
+		model.addAttribute("result", ms.memberRegister(dto));
+		return "member/register_save";
 	}
 	@GetMapping("/info")
 	public String info(Model model, @RequestParam("id") String id) {

@@ -32,8 +32,17 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void memberRegister(MemberDTO dto) {
-		mapper.memberRegister(dto);
+	public int memberRegister(MemberDTO dto) {
+		int result;
+		try {
+			mapper.memberRegister(dto);
+			result = 1;
+		} catch (Exception e) {
+			System.out.println("---- SQL insert/id 중복 에러 ----");
+			e.printStackTrace();
+			result = 0;
+		}
+		return result;
 	}
 
 	@Override

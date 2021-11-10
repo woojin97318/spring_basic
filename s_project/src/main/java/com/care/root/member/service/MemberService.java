@@ -9,6 +9,6 @@ import com.care.root.member.dto.MemberDTO;
 public interface MemberService {
 	public int userChk(String id, String pw);
 	public ArrayList<MemberDTO> memberinfo();
-	public void memberRegister(MemberDTO dto);
+	public int memberRegister(MemberDTO dto);
 	public void info(Model model, String id);
 }
