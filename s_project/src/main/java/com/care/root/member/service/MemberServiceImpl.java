@@ -3,6 +3,7 @@ package com.care.root.member.service;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -12,13 +13,19 @@ import com.care.root.mybatis.member.MemberMapper;
 @Service
 public class MemberServiceImpl implements MemberService {
 	@Autowired MemberMapper mapper;
+	BCryptPasswordEncoder encoder;
+	
+	public MemberServiceImpl() { //생성자
+		encoder = new BCryptPasswordEncoder();
+	}
 
 	@Override
 	public int userChk(String id, String pw) {
 		int result = 0;
 		ArrayList<MemberDTO> list = mapper.memberDTOList();
 		for(MemberDTO dto : list) {
-			if(id.equals(dto.getId()) && pw.equals(dto.getPw())) {
+			// encoder.matches(사용자가 입력한 비밀번호, DB의 비밀번호)
+			if(id.equals(dto.getId()) && encoder.matches(pw, dto.getPw())) {
 				result = 1;
 				break;
 			}
@@ -33,6 +40,12 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int memberRegister(MemberDTO dto) {
+		// PW 암호화 후 DB에 저장
+		System.out.println("비번 변경 전 : " + dto.getPw());
+		String securePw = encoder.encode(dto.getPw());
+		System.out.println("비번 변경 후 : " + securePw);
+		dto.setPw(securePw);
+		
 		int result;
 		try {
 			mapper.memberRegister(dto);

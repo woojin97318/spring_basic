@@ -11,15 +11,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.care.root.common.MemberSessionName;
 import com.care.root.member.dto.MemberDTO;
 import com.care.root.member.service.MemberService;
 
 @Controller
-public class MemberController {
+public class MemberController implements MemberSessionName {
 	@Autowired MemberService ms;
 	
 	@GetMapping("index")
 	public String index() {
+		System.out.println("컨트롤러의 index 실행");
 		return "index";
 	}
 	@GetMapping("login")

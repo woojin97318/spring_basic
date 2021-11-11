@@ -66,15 +66,16 @@
 		<div class="wrap">
 			<nav>
     			<ul>
-					<li><a href="index">HOME</a></li>
-					<li><a href="memberinfo">MEMBERINFO</a></li>
+					<li><a href="${contextPath }/index">HOME</a></li>
+					<li><a href="${contextPath }/memberinfo">MEMBERINFO</a></li>
+					<li><a href="${contextPath }/test/board">TESTBOARD</a></li>
 					<li>
 						<c:choose>
 							<c:when test="${loginUser == null }">
-								<a href="login">LOGIN</a>
+								<a href="${contextPath }/login">LOGIN</a>
 							</c:when>
 							<c:otherwise>
-								<a href="logout">LOGOUT</a>
+								<a href="${contextPath }/logout">LOGOUT</a>
 							</c:otherwise>
 						</c:choose>
 					</li>
