@@ -1,12 +1,17 @@
 package com.care.root.member.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,20 +34,46 @@ public class MemberController implements MemberSessionName {
 		return "member/login";
 	}
 	@PostMapping("userChk")
-	public String loginlogin(@RequestParam("id") String id,
-							@RequestParam("pw") String pw,
-							HttpSession session) {
+	public String loginlogin(@RequestParam String id, @RequestParam String pw,
+							@RequestParam(required = false) String autoLogin,
+							HttpSession session, HttpServletResponse response) {
 		if(ms.userChk(id, pw) == 0) { // 로그인 실패
 			return "member/failLogin";
 		}else { // 로그인 성공
-			session.setAttribute("loginUser", id);
+			session.setAttribute(LOGIN, id);
+			if(autoLogin != null) { // 자동로그인 체크시 loginCookie생성
+				int limitTime = 60*60*24*90; //90일
+				Cookie logincookie = new Cookie("loginCookie", session.getId());
+				logincookie.setPath("/");
+				logincookie.setMaxAge(limitTime);
+				response.addCookie(logincookie);
+				
+				Calendar cal = Calendar.getInstance();
+				cal.setTime(new Date());
+				cal.add(Calendar.MONTH, 3);
+				
+				java.sql.Date limitDate = new java.sql.Date(cal.getTimeInMillis());
+				ms.keepLogin(session.getId(), limitDate, id);
+			}
 			return "member/successLogin";
 		}
 	}
 	@GetMapping("logout")
-	public String logout(HttpSession session) {
+	public String logout(HttpSession session, HttpServletResponse response,
+			@CookieValue(value="loginCookie", required=false) Cookie loginCookie) throws Exception {
+		if(session.getAttribute(LOGIN) != null) {
+			if(loginCookie != null) {
+				loginCookie.setPath("/");
+				loginCookie.setMaxAge(0);
+				response.addCookie(loginCookie);
+				ms.keepLogin(
+						"nan",
+						new java.sql.Date(System.currentTimeMillis()),
+						(String)session.getAttribute(LOGIN));
+			}
+		}
 		session.invalidate();
-		return "member/logout";
+		return "/member/logout";
 	}
 	@GetMapping("memberinfo")
 	public String memberinfo(Model model) {

@@ -25,18 +25,20 @@
 	
 	<beans:bean id="memberInterceptor"
 		class="com.care.root.member.interceptor.MemberInterceptor"/>
-	<beans:bean id="bti"
-		class="com.care.root.testboard.BoardTestInterceptor"/>
+	<beans:bean id="autoLogin"
+		class="com.care.root.member.interceptor.AutoLoginInterceptor"/>
 		
 	<interceptors>
 		<interceptor>
-			<!-- <mapping path="/index"/> -->
 			<mapping path="/memberinfo"/>
+			<mapping path="/test/board"/>
+			<mapping path="/test/write"/>
 			<beans:ref bean="memberInterceptor"/>
 		</interceptor>
+		
 		<interceptor>
-			<mapping path="/test/board"/>
-			<beans:ref bean="bti"/>
+			<mapping path="/index"/>
+			<beans:ref bean="autoLogin"/>
 		</interceptor>
 	</interceptors>
 	

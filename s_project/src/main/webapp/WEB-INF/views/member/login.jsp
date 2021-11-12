@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<c:set var="contextPath" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,10 +15,10 @@
 		<c:when test="${loginUser == null }">
 			<div align="center">
 				<h1>로그인 페이지</h1>
-				<form action="userChk" method="post">
+				<form action="${contextPath }/userChk" method="post">
 					<input type="text" name="id" placeholder="ID"><br>
 					<input type="password" name="pw" placeholder="PW"><br>
-					<input type="submit" value="login">
+					<input type="checkbox" name="autoLogin">자동 로그인					<input type="submit" value="login"><br>
 					<button type="button" onclick="location.href='register'">회원가입</button>
 				</form>
 			</div>

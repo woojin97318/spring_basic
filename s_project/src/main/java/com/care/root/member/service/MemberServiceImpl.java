@@ -1,6 +1,9 @@
 package com.care.root.member.service;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -61,5 +64,19 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void info(Model model, String id) {
 		model.addAttribute("info", mapper.info(id));
+	}
+
+	@Override
+	public void keepLogin(String sessionId, Date limitDate, String id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sessionId", sessionId);
+		map.put("limitDate", limitDate);
+		map.put("id", id);
+		mapper.keepLogin(map);
+	}
+
+	@Override
+	public MemberDTO getUserSessionId(String sessionId) {
+		return mapper.getUserSessionId(sessionId);
 	}
 }

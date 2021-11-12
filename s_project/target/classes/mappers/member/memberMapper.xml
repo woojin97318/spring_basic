@@ -9,6 +9,8 @@
 		<result property="id" column="id"/>
 		<result property="pw" column="pw"/>
 		<result property="addr" column="addr"/>
+		<result property="sessionId" column="session_id"/>
+		<result property="limitTime" column="limit_time"/>
 	</resultMap>
 
 	<select id="memberDTOList" resultMap="member">
@@ -16,11 +18,20 @@
 	</select>
 
 	<insert id="memberRegister">
-		insert into membership values(#{id}, #{pw}, #{addr})
+		insert into membership(id, pw, addr) values(#{id}, #{pw}, #{addr})
+		
 	</insert>
 	
 	<select id="info" resultMap="member">
 		select * from membership where id=#{id}
+	</select>
+	
+	<update id="keepLogin">
+		update membership set session_id=#{sessionId}, limit_time=#{limitDate} where id=#{id}
+	</update>
+	
+	<select id="getUserSessionId" resultMap="member">
+		select * from membership where session_id = #{sessionId}
 	</select>
 
 </mapper>
