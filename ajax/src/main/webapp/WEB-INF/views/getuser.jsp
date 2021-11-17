@@ -78,7 +78,6 @@
 		for(var i = 0; i < arr.length; i++) {
 			form[arr[i].name] = arr[i].value
 		}
-		console.log("form : " + form)
 		
 		$.ajax({
 			url : "membership",
@@ -89,23 +88,24 @@
 			success : function() {
 				alert("회원가입 성공")
 			}
-			
 		})
 	}
 </script>
 </head>
-<body>getuser.jsp<hr>
-	<span id="users"></span>
-	<hr>
+<body>
+	<span id="users"></span><hr>
 	<button type="button" onclick="getUsers()">사용자 목록 보기</button>
 	<hr>
+	
 	<input type="text" id="userId">
 	<button type="button" onclick="userInfo()">개인 정보 보기</button>
 	<hr>
+	
 	<input type="text" id="name" placeholder="수정할 이름 입력"><br>
 	<input type="text" id="age" placeholder="수정할 나이 입력"><br>
 	<button type="button" onclick="modify()">개인 정보 수정</button>
 	<hr>
+	
 	<h3>회원가입</h3>
 	<form id="fo">
 		<input type="text" id="uId" name="uId" placeholder="id"><br>

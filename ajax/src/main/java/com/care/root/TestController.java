@@ -15,9 +15,26 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TestController {
+
+	@GetMapping(value="rest", produces="application/json; charset=utf-8")
+	public String get() {
+		return "{ \"execute\" : \"get 데이터 요청할때 사용\" }";
+	}
+	@PostMapping(value="rest", produces="application/json; charset=utf-8")
+	public String post() {
+		return "{ \"execute\" : \"post 데이터 추가할때 사용\" }";
+	}
+	@PutMapping(value="rest", produces="application/json; charset=utf-8")
+	public String put() {
+		return "{ \"execute\" : \"put 데이터 수정할때 사용\" }";
+	}
+	@DeleteMapping(value="rest", produces="application/json; charset=utf-8")
+	public String delete() {
+		return "{ \"execute\" : \"delete 데이터 삭제할때 사용\" }";
+	}
+	
 	static int cnt = 0;
 	static Map<String, InfoDTO> DBMap = new HashMap<String, InfoDTO>();
-	
 	@GetMapping(value="users", produces="application/json; charset=utf-8")
 	public ArrayList<InfoDTO> users() {
 		ArrayList<InfoDTO> list = new ArrayList<InfoDTO>();
@@ -30,7 +47,6 @@ public class TestController {
 		}
 		return list;
 	}
-	
 	@GetMapping(value="user", produces="application/json; charset=utf-8")
 	public InfoDTO user(@RequestParam String id) {
 		return DBMap.get(id);
@@ -55,22 +71,5 @@ public class TestController {
 		System.out.println(member.get("uAddr"));
 		System.out.println(member.get("uPhone"));
 		return "{ \"test\":true }";
-	}
-	
-	@GetMapping(value="rest", produces="application/json; charset=utf-8")
-	public String get() {
-		return "{ \"execute\" : \"get 데이터 요청할때 사용\" }";
-	}
-	@PostMapping(value="rest", produces="application/json; charset=utf-8")
-	public String post() {
-		return "{ \"execute\" : \"post 데이터 추가할때 사용\" }";
-	}
-	@PutMapping(value="rest", produces="application/json; charset=utf-8")
-	public String put() {
-		return "{ \"execute\" : \"put 데이터 수정할때 사용\" }";
-	}
-	@DeleteMapping(value="rest", produces="application/json; charset=utf-8")
-	public String delete() {
-		return "{ \"execute\" : \"delete 데이터 삭제할때 사용\" }";
 	}
 }

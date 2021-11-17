@@ -41,7 +41,7 @@
 	}
 </script>
 </head>
-<body>rest01.jsp<hr>
+<body>
 	<label id="label"></label>
 	<hr>
 	<button type="button" onclick="ajaxGet()">get 호출</button><br>

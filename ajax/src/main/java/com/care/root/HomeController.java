@@ -18,49 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
-	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
-	@GetMapping("rest01")
-	public String rest01() {
-		return "rest01";
-	}
-	@GetMapping("getuser")
-	public String getUser() {
-		return "getuser";
-	}
-	
-	@GetMapping("non_ajax")
-	public String nonAjax() {
-		System.out.println("non ajax 실행");
-		return "non_ajax";
-	}
-	@GetMapping("ajax")
-	public String ajax() {
-		System.out.println("ajax 실행");
-		return "ajax";
-	}
-	
-	static int cnt = 0;
-	@GetMapping("ajax_result")
-	@ResponseBody
-	public String ajaxResult() {
-		return ++cnt + "";
-	}
-	
-	@GetMapping("ajax01")
-	public String ajax01() {
-		return "ajax01";
-	}
-	
-	@PostMapping(value="ajax_result01", produces="application/json; charset=utf-8")
-	@ResponseBody
-	public Map ajaxResult01(@RequestBody Map dto) {
-		System.out.println("이름 : " + dto.get("name"));
-		System.out.println("나이 : " + dto.get("age"));
-		System.out.println("주소 : " + dto.get("addr"));
-		return dto;
-	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -75,5 +33,44 @@ public class HomeController {
 		
 		return "home";
 	}
+	
+	@GetMapping("non_ajax")
+	public String nonAjax() {
+		System.out.println("non ajax 실행");
+		return "non_ajax";
+	}
+	@GetMapping("ajax")
+	public String ajax() {
+		System.out.println("ajax 실행");
+		return "ajax";
+	}
+	static int cnt = 0;
+	@GetMapping("ajax_result")
+	@ResponseBody
+	public String ajaxResult() {
+		return ++cnt + "";
+	}
+	@GetMapping("ajax01")
+	public String ajax01() {
+		return "ajax01";
+	}
+	@PostMapping(value="ajax_result01", produces="application/json; charset=utf-8")
+	@ResponseBody
+	public Map ajaxResult01(@RequestBody Map mapDto) {
+		System.out.println("이름 : " + mapDto.get("name"));
+		System.out.println("나이 : " + mapDto.get("age"));
+		System.out.println("주소 : " + mapDto.get("addr"));
+		return mapDto;
+	}
+	
+	@GetMapping("rest01")
+	public String rest01() {
+		return "rest01";
+	}
+	@GetMapping("getuser")
+	public String getUser() {
+		return "getuser";
+	}
+	
 	
 }

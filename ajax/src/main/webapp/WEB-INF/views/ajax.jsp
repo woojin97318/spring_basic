@@ -9,8 +9,8 @@
 <script type="text/javascript">
 	function ajaxTest() {
 		$.ajax({
-			url : "ajax_result",//"ajax",
-			type : "GET",
+			url : "ajax_result",
+			type : "get",
 			success : function(data) {
 				$("#count").text(data)
 				console.log("성공")
