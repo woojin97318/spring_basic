@@ -16,15 +16,13 @@ import com.care.root.service.FileService;
 public class FileDownloadController {
 	@GetMapping("download")
 	public void download(@RequestParam("file") String fileName,
-							HttpServletResponse response) throws Exception {
-		/*
-		 Content-disposition : 파일 다운로드하겠다는 의미
-		 attachment : 파일을 다운로드하여 브라우저로 표현하겠다
-		 */
-	response.addHeader("Content-disposition","attachment; fileName="+fileName);
+						HttpServletResponse response) throws Exception {
+		 // Content-disposition : 파일 다운로드하겠다는 의미
+		 // attachment : 파일을 다운로드하여 브라우저로 표현하겠다
+		response.addHeader("Content-disposition", "attachment; fileName=" + fileName);
 		File file = new File(FileService.IMAGE_REPO + "/" + fileName);
 		FileInputStream in = new FileInputStream(file);
-		FileCopyUtils.copy(in, response.getOutputStream() );
+		FileCopyUtils.copy(in, response.getOutputStream());
 		in.close();
 	}
 }

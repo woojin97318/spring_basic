@@ -10,8 +10,7 @@
 </head>
 <body>
 	<h1>파일 업로드</h1>
-	<form action="${contextPath }/upload" method="post"
-		enctype="multipart/form-data">
+	<form action="${contextPath }/upload" method="post" enctype="multipart/form-data">
 		<input type="text" name="id"><br>
 		<input type="text" name="name"><br>
 		<input type="file" name="file"><br>

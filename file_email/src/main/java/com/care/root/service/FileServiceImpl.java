@@ -15,8 +15,7 @@ import com.care.root.mybatis.FileMapper;
 
 @Service
 public class FileServiceImpl implements FileService {
-	@Autowired
-	FileMapper fm;
+	@Autowired FileMapper fm;
 
 	public void fileProcess(MultipartHttpServletRequest mul) {
 		ShoesDTO dto = new ShoesDTO();
@@ -24,11 +23,11 @@ public class FileServiceImpl implements FileService {
 		dto.setName(mul.getParameter("name"));
 
 		MultipartFile file = mul.getFile("file");
-		if (file.getSize() != 0) { // !file.isEmpty()
+		if (file.getSize() != 0) {
 			SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss-");
 			Calendar calendar = Calendar.getInstance();
-
 			String sysFileName = format.format(calendar.getTime());
+			
 			sysFileName += file.getOriginalFilename();
 
 			dto.setImgName(sysFileName);
@@ -39,7 +38,7 @@ public class FileServiceImpl implements FileService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else {
+		}else {
 			dto.setImgName("nan");
 		}
 		fm.saveData(dto);

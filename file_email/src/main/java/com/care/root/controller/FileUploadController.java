@@ -20,17 +20,6 @@ public class FileUploadController {
 	}
 	@PostMapping("upload")
 	public String upload(MultipartHttpServletRequest mul) {
-		/*
-		String id = mul.getParameter("id");
-		String name = mul.getParameter("name");
-		
-		MultipartFile file = mul.getFile("file");
-		String originalName = file.getOriginalFilename();
-		
-		System.out.println("id : "+id);
-		System.out.println("name : "+name);
-		System.out.println("originalName : "+originalName);
-		*/
 		fs.fileProcess(mul);
 		return "redirect:form";
 	}
