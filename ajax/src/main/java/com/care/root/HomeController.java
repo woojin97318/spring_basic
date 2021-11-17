@@ -21,6 +21,15 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	@GetMapping("rest01")
+	public String rest01() {
+		return "rest01";
+	}
+	@GetMapping("getuser")
+	public String getUser() {
+		return "getuser";
+	}
+	
 	@GetMapping("non_ajax")
 	public String nonAjax() {
 		System.out.println("non ajax 실행");
