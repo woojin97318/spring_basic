@@ -16,7 +16,7 @@ public class MemberInterceptor extends HandlerInterceptorAdapter implements Memb
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		System.out.println("index(컨트롤러) 실행 전 실행");
+//		System.out.println("index(컨트롤러) 실행 전 실행");
 		
 		HttpSession session = request.getSession();
 		if(session.getAttribute(LOGIN) == null) {

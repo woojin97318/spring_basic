@@ -68,8 +68,11 @@
     			<ul>
 					<li><a href="${contextPath }/index">HOME</a></li>
 					<li><a href="${contextPath }/memberinfo">MEMBERINFO</a></li>
+					<li><a href="${contextPath }/board/boardAllList">BOARD</a></li>
+					<!--
 					<li><a href="${contextPath }/test/board">TEST_BOARD</a></li>
 					<li><a href="${contextPath }/test/write">TEST_WRITE</a></li>
+					-->
 					<li>
 						<c:choose>
 							<c:when test="${loginUser == null }">

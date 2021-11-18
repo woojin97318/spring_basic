@@ -158,8 +158,11 @@
         <Context docBase="mvc02" path="/root" reloadable="true" source="org.eclipse.jst.jee.server:mvc02"/>
         <Context docBase="mvc_quiz" path="/member" reloadable="true" source="org.eclipse.jst.jee.server:mvc_quiz"/>
         <Context docBase="mvc_quiz01" path="/root" reloadable="true" source="org.eclipse.jst.jee.server:mvc_quiz01"/>
-        <Context docBase="cookie_session" path="/root" reloadable="true" source="org.eclipse.jst.jee.server:cookie_session"/>
         <Context docBase="mybatis_junit_06" path="/root" reloadable="true" source="org.eclipse.jst.jee.server:mybatis_junit_06"/>
+        <Context docBase="file_email_11" path="/file_email_11" reloadable="true" source="org.eclipse.jst.jee.server:file_email_11"/>
+        <Context docBase="cSookie_session" path="/root" reloadable="true" source="org.eclipse.jst.jee.server:cookie_session"/>
+        <Context docBase="file_email" path="/root" reloadable="true" source="org.eclipse.jst.jee.server:file_email"/>
+        <Context docBase="ajax" path="/root" reloadable="true" source="org.eclipse.jst.jee.server:ajax"/>
         -->
         <Context docBase="s_project" path="/root" reloadable="true" source="org.eclipse.jst.jee.server:s_project"/>
         </Host>
