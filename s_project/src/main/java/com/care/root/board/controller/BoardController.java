@@ -27,8 +27,9 @@ public class BoardController {
 	@Autowired BoardService bs;
 
 	@GetMapping("boardAllList")
-	public String boardAllList(Model model) {
-		bs.selectAllBoardList(model);
+	public String boardAllList(Model model,
+			@RequestParam(required = false, defaultValue = "1") int num) {
+		bs.selectAllBoardList(model, num);
 		return "board/boardAllList";
 	}
 	@GetMapping("writeForm")
@@ -66,6 +67,21 @@ public class BoardController {
 			HttpServletResponse response, 
 			HttpServletRequest request) throws IOException {
 		String message = bs.boardDelete(write_no,imageFileName,request);
+		PrintWriter out = null;
+		response.setContentType("text/html; charset=utf-8");
+		out = response.getWriter();
+		out.println(message);
+	}
+	@GetMapping("modify_form")
+	public String modifyForm(@RequestParam int writeNo, Model model) {
+		bs.getData(writeNo, model);
+		return "board/modify_form";
+	}
+	@PostMapping("modify")
+	public void modify(MultipartHttpServletRequest mul,
+			HttpServletResponse response,
+			HttpServletRequest request) throws IOException {
+		String message = bs.modify(mul, request);
 		PrintWriter out = null;
 		response.setContentType("text/html; charset=utf-8");
 		out = response.getWriter();

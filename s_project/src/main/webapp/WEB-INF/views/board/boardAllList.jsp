@@ -12,7 +12,7 @@
 	<c:import url="../default/header.jsp"/>
 
 	<div class="wrap">
-		<table>
+		<table border="1">
 			<tr>
 				<th>번호</th>
 				<th>id</th>
@@ -41,7 +41,13 @@
 				</tr>
 			</c:forEach>
 			<tr>
-				<td colspan="6"><a href="${contextPath }/board/writeForm">글작성</a>
+				<td colspan="6">
+					<span align="left">
+						<c:forEach var="num" begin="1" end="${repeat }">
+							<a href="boardAllList?num=${num }">[${num }]</a>
+						</c:forEach>
+					</span>
+					<a href="${contextPath }/board/writeForm">글작성</a>
 				</td>
 			</tr>
 		</table>
