@@ -27,7 +27,7 @@ public class MemberServiceImpl implements MemberService {
 		int result = 0;
 		ArrayList<MemberDTO> list = mapper.memberDTOList();
 		for(MemberDTO dto : list) {
-			// encoder.matches(사용자가 입력한 비밀번호, DB의 비밀번호)
+			// encoder.matches(사용자가 입력한 비밀번호, DB의 비밀번호) 복호화!
 			if(id.equals(dto.getId()) && encoder.matches(pw, dto.getPw())) {
 				result = 1;
 				break;

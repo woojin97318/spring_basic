@@ -14,11 +14,12 @@
 	<c:choose>
 		<c:when test="${loginUser == null }">
 			<div align="center">
-				<h1>로그인 페이지</h1>
+				<h1>Login</h1>
+				<br>
 				<form action="${contextPath }/userChk" method="post">
 					<input type="text" name="id" placeholder="ID"><br>
 					<input type="password" name="pw" placeholder="PW"><br>
-					<input type="checkbox" name="autoLogin">자동 로그인					<input type="submit" value="login"><br>
+					<input type="checkbox" name="autoLogin">자동 로그인&nbsp;&nbsp;					<input type="submit" value="login"><br>
 					<button type="button" onclick="location.href='register'">회원가입</button>
 				</form>
 			</div>

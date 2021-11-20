@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import com.care.root.member.dto.MemberDTO;
 
 public interface MemberService {
-	public int userChk(String id, String pw);
+	public int userChk(String id, String pw);//input id/pw 로그인 체크
 	public ArrayList<MemberDTO> memberinfo();
 	public int memberRegister(MemberDTO dto);
 	public void info(Model model, String id);

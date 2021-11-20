@@ -24,9 +24,9 @@ import com.care.root.member.service.MemberService;
 public class MemberController implements MemberSessionName {
 	@Autowired MemberService ms;
 	
-	@GetMapping("index")
+	@GetMapping("index") // 메인 페이지
 	public String index() {
-		System.out.println("컨트롤러의 index 실행");
+//		System.out.println("Controller index 실행");
 		return "index";
 	}
 	@GetMapping("login")
@@ -37,6 +37,7 @@ public class MemberController implements MemberSessionName {
 	public String loginlogin(@RequestParam String id, @RequestParam String pw,
 							@RequestParam(required = false) String autoLogin,
 							HttpSession session, HttpServletResponse response) {
+		// ID, PW, 자동로그인checkBox, session, response 사용
 		if(ms.userChk(id, pw) == 0) { // 로그인 실패
 			return "member/failLogin";
 		}else { // 로그인 성공
