@@ -28,14 +28,12 @@
 	
 	<div id="wrap" style="width: 400px; margin: 0 auto;">
 		<h1 style="text-align: center">글쓰기</h1>
-		<form method="post" action="${contextPath}/board/writeSave"
+		<form action="${contextPath}/board/writeSave" method="post"
 			enctype="multipart/form-data">
 			<b>작성자</b><br>
-			<input type="text" name="id" value="${loginUser }" readonly />
-			<hr>
+			<input type="text" name="id" value="${loginUser }" readonly/><br>
 			<b>제목</b><br>
-			<input type="text" size="50" name="title" />
-			<hr>
+			<input type="text" size="50" name="title" /><br>
 			<b>내용</b><br>
 			<textarea name="content" rows="10" cols="50"></textarea>
 			<hr>

@@ -24,11 +24,10 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void selectAllBoardList(Model model, int num) {
 		int pageLetter = 3;
-		int allCount = mapper.selectBoardCount();
-		int repeat = allCount / pageLetter;
-		if(allCount % pageLetter != 0) {
+		int allCount = mapper.selectBoardCount();//전체 게시글 개수
+		int repeat = allCount / pageLetter;//페이지 개수
+		if(allCount % pageLetter != 0)
 			repeat += 1;
-		}
 		int end = num * pageLetter;
 		int start = end + 1 - pageLetter;
 		
