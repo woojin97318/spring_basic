@@ -162,10 +162,10 @@
         <Context docBase="file_email_11" path="/file_email_11" reloadable="true" source="org.eclipse.jst.jee.server:file_email_11"/>
         <Context docBase="cSookie_session" path="/root" reloadable="true" source="org.eclipse.jst.jee.server:cookie_session"/>
         <Context docBase="file_email" path="/root" reloadable="true" source="org.eclipse.jst.jee.server:file_email"/>
-        <Context docBase="s_project" path="/root" reloadable="true" source="org.eclipse.jst.jee.server:s_project"/>
         <Context docBase="ajax" path="/root" reloadable="true" source="org.eclipse.jst.jee.server:ajax"/>
-        -->
         <Context docBase="tx_aop" path="/root" reloadable="true" source="org.eclipse.jst.jee.server:tx_aop"/>
+        -->
+        <Context docBase="s_project" path="/root" reloadable="true" source="org.eclipse.jst.jee.server:s_project"/>
         </Host>
     </Engine>
   </Service>
